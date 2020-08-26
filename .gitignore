@@ -1,0 +1,6 @@
+videos
+*.log
+*.txt
+*.pyc
+*.cache
+
