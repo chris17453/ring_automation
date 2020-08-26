@@ -47,19 +47,18 @@ def download(deck,data_dir,device_type,device):
 
     count = 0
     eid = 0
-    while True:
-        events = deck.history()
-        for event in events:
-            eid = event['id']
+    events = deck.history()
+    for event in events:
+        eid = event['id']
 
-            file_name=os.path.join(base_dir,'{0}.mp4'.format(eid))
-            if os.path.exists(file_name)==True:
-                info("Skipping: {0}".format(file_name))
-                continue
+        file_name=os.path.join(base_dir,'{0}.mp4'.format(eid))
+        if os.path.exists(file_name)==True:
+            info("Skipping: {0}".format(file_name))
+            continue
 
-            deck.recording_download(eid, filename=file_name)
-            info('Downloaded: {0}'.format(file_name))
-            count += 1
+        deck.recording_download(eid, filename=file_name)
+        info('Downloaded: {1} to {0}'.format(file_name,eid))
+        count += 1
     
 
 def token_updated(token):
@@ -83,8 +82,6 @@ def list_videos(ring):
                     events = deck.history()
                     for event in events:
                         eid = event['id']
-                        if eid < LAST_ONE:
-                            continue
                         info('video: {0},{1},{2}'.format(device_type,device.name,event['id']))
 
 
@@ -141,7 +138,7 @@ if __name__ == "__main__":
     parser.add_argument('-i', '--device-info'     , help='print device info',action="store_true")
     parser.add_argument('-d', '--download'        , help='download device videos',action="store_true")
     parser.add_argument('-b', '--doorbell-events' , help='show doorbell events',action="store_true")
-    parser.add_argument(      '--list-videos'     , help='list all device videos',action="store_true")
+    parser.add_argument('-v', '--list-videos'     , help='list all device videos',action="store_true")
     parser.add_argument(      '--data'            , help='set output data dir',default=data_dir)
      
     args = parser.parse_args()
