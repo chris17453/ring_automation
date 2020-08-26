@@ -7,6 +7,7 @@
 - https://github.com/tchellomello/python-ring-doorbell
 
 
+
 ## Usage
 ```
 $ python ring_downloader.py  -h
@@ -25,6 +26,7 @@ optional arguments:
   --data DATA           set output data dir
 ```
 
+![alt text](https://github.com/chris17453/ring_automation/blob/master/example/Screenshot%20from%202020-08-26%2011-28-17.png?raw=true "Example Video Image")
 
 ## doorbell event list example
 ```bash
